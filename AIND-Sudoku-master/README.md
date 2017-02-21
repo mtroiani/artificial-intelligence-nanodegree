@@ -3,17 +3,17 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: In sudoku naked twins occur when two boxes in the same unit only have the same two possible values as possibilities. A unit can be a row, column, 3x3 cube, or depending on the game, one of the two major diagonals. Units can only have one instance of each digit from 1 through 9. When two boxes have only the same two possible values we don't know which box will have which value, but we know that no other box can have either of those two values because once we determine one of them we immediately know the other. Therefore, in this case we can remove both of these possible numbers from all other boxes in the same unit. Using constraint propagation we can we can continue reducing the unsolved boxes in the puzzle with the naked twins, elimination, and only choice techniques. This pattern can also be extended to triplets (where three boxes have the same three possibilities) and more.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: To solve the diagonal sudoku problem we added the two major diagonals (from top left to bottom right and from bottom left to top right of the grid) to the group of units. Each unit (row, column, 3x3 square, and major diagonal) can only have one instance of each digit from 1 through 9, so we know that if a digit occurs within a unit no other box in the unit can contain that digit, and since each box needs a digit we know that if there is only one possibility for that box it can be assigned to that box. By adding the two major diagonals to our list of units our agent also enforces these constraints to the diagonals, allowing our sudoku solver to reduce the unsolved boxes in the puzzle for diagonal sudoku in addition to regular sudoku. 
 
 ### Install
 
 This project requires **Python 3**.
 
-We recommend students install [Anaconda](https://www.continuum.io/downloads), a pre-packaged Python distribution that contains all of the necessary libraries and software for this project. 
+We recommend students install [Anaconda](https://www.continuum.io/downloads), a pre-packaged Python distribution that contains all of the necessary libraries and software for this project.
 Please try using the environment we provided in the Anaconda lesson of the Nanodegree.
 
 ##### Optional: Pygame
