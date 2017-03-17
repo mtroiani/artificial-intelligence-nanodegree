@@ -172,13 +172,13 @@ class CustomPlayer:
         if self.time_left() < self.TIMER_THRESHOLD:
             raise Timeout()
 
-        if depth == 0: 
-            return self.score(game, game.active_player if maximizing_player else game.inactive_player)
-
         best_score = float('-inf') if maximizing_player else float('+inf')
         best_move = (-1,-1)
 
-        for move in self.get_legal_moves():
+        if depth == 0:
+            return self.score(game, game.active_player if maximizing_player else game.inactive_player), best_move
+
+        for move in game.get_legal_moves():
             new_board = game.forecast_move(move)
             val, _ = self.minimax(new_board, depth - 1, not maximizing_player)
 
@@ -233,5 +233,28 @@ class CustomPlayer:
         if self.time_left() < self.TIMER_THRESHOLD:
             raise Timeout()
 
-        # TODO: finish this function!
-        raise NotImplementedError
+        best_score = float('-inf') if maximizing_player else float('+inf')
+        best_move = (-1,-1)
+
+        if depth == 0:
+            return self.score(game, game.active_player if maximizing_player else game.inactive_player), best_move
+
+        for move in game.get_legal_moves():
+            new_board = game.forecast_move(move)
+            val, _ = self.alphabeta(new_board, depth - 1, alpha, beta, not maximizing_player)
+
+            if maximizing_player:
+                if val > best_score:
+                    best_score = val
+                    best_move = move
+                if val >= beta:
+                    return best_score, best_move
+                alpha = max(alpha, best_score)
+            else:
+                if val < best_score:
+                    best_score = val
+                    best_move = move
+                if val <= alpha:
+                    return best_score, best_move
+                beta = min(beta, best_score)
+        return best_score, best_move
