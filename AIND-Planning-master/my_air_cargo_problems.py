@@ -199,7 +199,7 @@ class AirCargoProblem(Problem):
         conditions by ignoring the preconditions required for an action to be
         executed.
         """
-        #When we ignore preconditions we can assume each goal can be accomplished in one step - return number of goals. 
+        #When we ignore preconditions we can assume each goal can be accomplished in one step - return number of goals.
         count = len(self.goal)
         return count
 
@@ -244,6 +244,7 @@ def air_cargo_p2() -> AirCargoProblem:
            expr('At(C2, SFO)'), expr('At(C2, ATL)'),
            expr('In(C2, P1)'), expr('In(C2, P2)'), expr('In(C2, P3)'),
            expr('At(C3, SFO)'), expr('At(C3, JFK)'),
+           expr('In(C3, P1)'), expr('In(C3, P2)'), expr('In(C3, P3)'),
            expr('At(P1, JFK)'), expr('At(P1, ATL)'),
            expr('At(P2, SFO)'), expr('At(P2, ATL)'),
            expr('At(P3, SFO)'), expr('At(P3, JFK)')]
