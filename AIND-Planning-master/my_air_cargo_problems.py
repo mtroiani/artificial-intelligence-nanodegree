@@ -200,7 +200,12 @@ class AirCargoProblem(Problem):
         executed.
         """
         #When we ignore preconditions we can assume each goal can be accomplished in one step - return number of goals.
-        count = len(self.goal)
+        count = 0
+
+        for i, fluent in enumerate(self.state_map):
+            if fluent in self.goal:
+                if node.state[i] == 'F':
+                    count +=1
         return count
 
 
