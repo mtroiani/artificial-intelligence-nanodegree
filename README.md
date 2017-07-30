@@ -6,6 +6,7 @@ __Projects__
 * Build a Sign Language Recognizer
 * Dog Breed Identifier using CNNs
 * Time Series Prediction and Text Generation using RNNs
+* Affectiva Mimic Me
 
 See links for individual project requirements.
 
@@ -38,3 +39,8 @@ __Description:__ In this project, you will learn how to build a pipeline to proc
 
 ## [Time Series Prediction and Text Generation using RNNs](https://github.com/mtroiani/artificial-intelligence-nanodegree/tree/master/AIND-RNN-master)
 __Description:__ In this project you'll build RNNs that can generate sequences based on input data - with a focus on two applications: With the first we'll use real market data in order to predict future Apple stock prices using an RNN model. The second one will be trained on Sir Arthur Conan Doyle's classic novel Sherlock Holmes and will generate wacky sentences based on it that may - or may not - become the next great Sherlock Holmes novel!
+
+---
+
+## [Affectiva Mimic Me](https://github.com/mtroiani/artificial-intelligence-nanodegree/tree/master/AIND-CV-Mimic-master)
+__Description:__ In this project, you will learn to track faces in a video and identify facial expressions using Affectiva. As a fun visualization, you will tag each face with an appropriate emoji next to it. You will then turn this into a game where the player needs to mimic a random emoji displayed by the computer!
