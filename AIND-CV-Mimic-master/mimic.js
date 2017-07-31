@@ -74,7 +74,7 @@ function onReset() {
   $("#logs").html("");  // clear out previous log
 
   // TODO(optional): You can restart the game as well
-  // <your code here>
+  init();
 };
 
 // Add a callback to notify when camera access is allowed
@@ -102,7 +102,7 @@ detector.addEventListener("onInitializeSuccess", function() {
   $("#face_video").css("display", "none");
 
   // TODO(optional): Call a function to initialize the game, if needed
-  // <your code here>
+  init();
 });
 
 // Add a callback to receive the results from processing an image
@@ -133,7 +133,7 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
     drawEmoji(canvas, image, faces[0]);
 
     // TODO: Call your function to run the game (define it first!)
-    // <your code here>
+    mimicMe(faces[0]);
   }
 });
 
@@ -147,15 +147,17 @@ function drawFeaturePoints(canvas, img, face) {
 
   // TODO: Set the stroke and/or fill style you want for each feature point marker
   // See: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#Fill_and_stroke_styles
-  // <your code here>
-  
+  ctx.strokeStyle = 'white';
+
   // Loop over each feature point in the face
   for (var id in face.featurePoints) {
     var featurePoint = face.featurePoints[id];
 
     // TODO: Draw feature point, e.g. as a circle using ctx.arc()
     // See: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc
-    // <your code here>
+    ctx.beginPath();
+    ctx.arc(featurePoint['x'], featurePoint['y'], 2, 0, 2 * Math.PI);
+    ctx.stroke();
   }
 }
 
@@ -165,15 +167,43 @@ function drawEmoji(canvas, img, face) {
   var ctx = canvas.getContext('2d');
 
   // TODO: Set the font and style you want for the emoji
-  // <your code here>
-  
+  ctx.font = '3em sans-serif';
+
   // TODO: Draw it using ctx.strokeText() or fillText()
   // See: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText
   // TIP: Pick a particular feature point as an anchor so that the emoji sticks to your face
-  // <your code here>
+  ctx.fillText(face.emojis.dominantEmoji, face.featurePoints[0]['x'] - 45, face.featurePoints[0]['y'] + 25);
 }
 
 // TODO: Define any variables and functions to implement the Mimic Me! game mechanics
+var currScore, totalScore, goalEmoji;
+
+function init() {
+  currScore = 0;
+  totalScore = 10;
+  setScore(currScore, totalScore);
+  goalEmoji = getGoalEmoji();
+  log("#logs", "Let's play mimicMe! Try to make this face: &#" + goalEmoji + ";");
+}
+
+function mimicMe(face) {
+  var emoji = toUnicode(face.emojis.dominantEmoji);
+  if (emoji == goalEmoji) {
+    currScore++;
+    log("#logs", "Emoji matched! Your score is " + currScore);
+    setScore(currScore, totalScore);
+    goalEmoji = getGoalEmoji();
+    log("#logs", "Now try to make this face: &#" + goalEmoji + ";");
+    if (currScore == totalScore) {
+      log("#logs", "Congratulations, you've won!");
+      goalEmoji = null;
+    }
+  }
+}
+
+function getGoalEmoji() {
+  return emojis[Math.floor(Math.random() * emojis.length)];
+}
 
 // NOTE:
 // - Remember to call your update function from the "onImageResultsSuccess" event handler above
