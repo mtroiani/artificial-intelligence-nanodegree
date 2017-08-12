@@ -7,6 +7,7 @@ __Projects__
 * Dog Breed Identifier using CNNs
 * Time Series Prediction and Text Generation using RNNs
 * Affectiva Mimic Me
+* Facial Keypoint Detection
 
 See links for individual project requirements.
 
@@ -44,3 +45,8 @@ __Description:__ In this project you'll build RNNs that can generate sequences b
 
 ## [Affectiva Mimic Me](https://github.com/mtroiani/artificial-intelligence-nanodegree/tree/master/AIND-CV-Mimic-master)
 __Description:__ In this project, you will learn to track faces in a video and identify facial expressions using Affectiva. As a fun visualization, you will tag each face with an appropriate emoji next to it. You will then turn this into a game where the player needs to mimic a random emoji displayed by the computer!
+
+---
+
+## [Facial Keypoint Detection](https://github.com/mtroiani/artificial-intelligence-nanodegree/tree/master/AIND-CV-FacialKeypoints)
+__Description:__ In this project, you’ll combine your knowledge of computer vision techniques and deep learning to build and end-to-end facial keypoint recognition system. Facial keypoints include points around the eyes, nose, and mouth on any face and are used in many applications, from facial tracking to emotion recognition. Your completed code should be able to take in any image containing faces and identify the location of each face and their facial keypoints.
