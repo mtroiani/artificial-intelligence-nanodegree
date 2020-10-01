@@ -1,4 +1,4 @@
-# Udacity Artificial Intelligence Nanodegree
+# Udacity Artificial Intelligence Nanodegree-Amazing and Innovative Projects
 __Projects__
 * Sudoku-Solving AI Agent
 * Isolation Game-Playing Agent
